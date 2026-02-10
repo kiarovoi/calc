@@ -28,7 +28,7 @@ const FORMAT_MULTIPLIER = {
 };
 
 function formatMoney(value) {
-  return `${Math.round(value).toLocaleString("pl-PL")} PLN`;
+  return `${Math.round(value).toLocaleString("uk-UA")} грн`;
 }
 
 function packageDiscount(sessions) {

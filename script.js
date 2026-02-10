@@ -2,6 +2,7 @@ const el = {
   people: document.getElementById("people"),
   durationHours: document.getElementById("durationHours"),
   sessionMinutes: document.getElementById("sessionMinutes"),
+  durationWarning: document.getElementById("durationWarning"),
 };
 
 function calculateSessionMinutes(durationHours, people) {
@@ -16,6 +17,13 @@ function calculate() {
   const creditMinutes = calculateSessionMinutes(durationHours, people);
 
   el.sessionMinutes.textContent = `${creditMinutes} минут`;
+
+  if (people === 2 && durationHours > 3) {
+    el.durationWarning.textContent =
+      "Продолжительность супервизионной сессии слишком велика для указанного количества участников.";
+  } else {
+    el.durationWarning.textContent = "";
+  }
 }
 
 [el.people, el.durationHours].forEach((input) => {

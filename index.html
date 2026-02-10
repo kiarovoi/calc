@@ -6,7 +6,7 @@
     <title>Калькулятор длительности сессии | Supervision</title>
     <meta
       name="description"
-      content="Калькулятор длительности сессии на 1 человека по формуле групповой супервизии."
+      content="Калькулятор длительности сессии на 1 человека для групповой супервизии."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,8 +25,7 @@
         <h1>Калькулятор длительности сессии</h1>
         <p>
           Выберите количество людей и продолжительность встречи. Калькулятор
-          покажет зачётные минуты на 1 особу по формуле:
-          <strong>G × (0.2 + 0.8 / N)</strong>.
+          покажет зачётные минуты на 1 особу.
         </p>
       </section>
 
@@ -64,6 +63,7 @@
           <div>
             <p>Продолжительность сессии за 1 особу</p>
             <h2 id="sessionMinutes">60 минут</h2>
+            <p id="durationWarning" class="result-warning"></p>
           </div>
         </div>
 

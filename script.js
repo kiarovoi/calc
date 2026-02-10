@@ -16,11 +16,11 @@ function calculate() {
   const durationHours = Number(el.durationHours.value);
   const creditMinutes = calculateSessionMinutes(durationHours, people);
 
-  el.sessionMinutes.textContent = `${creditMinutes} минут`;
+  el.sessionMinutes.textContent = `${creditMinutes} хвилин`;
 
   if (people === 2 && durationHours > 3) {
     el.durationWarning.textContent =
-      "Продолжительность супервизионной сессии слишком велика для указанного количества участников.";
+      "Тривалість супервізійної сесії є надто великою для вказаної кількості учасників.";
   } else {
     el.durationWarning.textContent = "";
   }

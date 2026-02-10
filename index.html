@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="ru">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Калькулятор длительности сессии | Supervision</title>
+    <title>Калькулятор тривалості сесії | Supervision</title>
     <meta
       name="description"
-      content="Калькулятор длительности сессии на 1 человека для групповой супервизии."
+      content="Калькулятор тривалості сесії на 1 людину для групової супервізії."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,17 +22,17 @@
 
     <main class="page">
       <section class="hero reveal">
-        <h1>Калькулятор длительности сессии</h1>
+        <h1>Калькулятор тривалості сесії</h1>
         <p>
-          Выберите количество людей и продолжительность встречи. Калькулятор
-          покажет зачётные минуты на 1 особу.
+          Оберіть кількість людей і тривалість зустрічі. Калькулятор покаже
+          залікові хвилини на 1 особу.
         </p>
       </section>
 
       <section class="card reveal delay-1">
         <div class="grid">
           <label class="field">
-            <span>Количество людей</span>
+            <span>Кількість людей</span>
             <select id="people">
               <option value="1" selected>1</option>
               <option value="2">2</option>
@@ -44,7 +44,7 @@
           </label>
 
           <label class="field">
-            <span>Продолжительность встречи (часы)</span>
+            <span>Тривалість зустрічі (години)</span>
             <select id="durationHours">
               <option value="1" selected>1</option>
               <option value="1.5">1.5</option>
@@ -61,8 +61,8 @@
 
         <div class="result" aria-live="polite">
           <div>
-            <p>Продолжительность сессии за 1 особу</p>
-            <h2 id="sessionMinutes">60 минут</h2>
+            <p>Тривалість сесії на 1 особу</p>
+            <h2 id="sessionMinutes">60 хвилин</h2>
             <p id="durationWarning" class="result-warning"></p>
           </div>
         </div>

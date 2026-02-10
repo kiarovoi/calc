@@ -33,12 +33,19 @@ function calculate() {
 
   el.sessionMinutes.textContent = `${creditMinutes} ${minuteWord(creditMinutes)}`;
 
+  const isTooShort =
+    ((people === 3 || people === 4) && durationHours <= 1.5) ||
+    ((people === 5 || people === 6) && durationHours <= 2.5);
+
   const isTooLong =
     (people === 1 && durationHours >= 2.5) ||
     (people === 2 && durationHours > 3) ||
     (people === 3 && durationHours >= 4.5);
 
-  if (isTooLong) {
+  if (isTooShort) {
+    el.durationWarning.textContent =
+      "Сеанс супервізії занадто короткий для зазначеної кількості людей";
+  } else if (isTooLong) {
     el.durationWarning.textContent =
       "Сеанс супервізії занадто довгий для зазначеної кількості людей";
   } else {

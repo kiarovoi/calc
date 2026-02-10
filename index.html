@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Калькулятор стоимости | Supervision</title>
+    <title>Калькулятор длительности сессии | Supervision</title>
     <meta
       name="description"
-      content="Онлайн-калькулятор стоимости с красивым интерфейсом для размещения на сайте."
+      content="Калькулятор длительности сессии на 1 человека по формуле групповой супервизии."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,40 +22,24 @@
 
     <main class="page">
       <section class="hero reveal">
-        <h1>Калькулятор стоимости супервизии</h1>
+        <h1>Калькулятор длительности сессии</h1>
         <p>
-          Выберите формат, количество людей, продолжительность встречи и количество
-          сессий. Цена пересчитывается мгновенно.
+          Выберите количество людей и продолжительность встречи. Калькулятор
+          покажет зачётные минуты на 1 особу по формуле:
+          <strong>G × (0.2 + 0.8 / N)</strong>.
         </p>
       </section>
 
       <section class="card reveal delay-1">
         <div class="grid">
           <label class="field">
-            <span>Формат</span>
-            <select id="format">
-              <option value="online">Онлайн</option>
-              <option value="offline">Офлайн</option>
-            </select>
-          </label>
-
-          <label class="field">
-            <span>Тип сессии</span>
-            <select id="type">
-              <option value="individual">Индивидуальная</option>
-              <option value="group">Групповая</option>
-              <option value="team">Командная / бизнес</option>
-            </select>
-          </label>
-
-          <label class="field">
             <span>Количество людей</span>
             <select id="people">
-              <option value="1">1</option>
+              <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
-              <option value="5" selected>5</option>
+              <option value="5">5</option>
               <option value="6">6</option>
             </select>
           </label>
@@ -63,8 +47,8 @@
           <label class="field">
             <span>Продолжительность встречи (часы)</span>
             <select id="durationHours">
-              <option value="1">1</option>
-              <option value="1.5" selected>1.5</option>
+              <option value="1" selected>1</option>
+              <option value="1.5">1.5</option>
               <option value="2">2</option>
               <option value="2.5">2.5</option>
               <option value="3">3</option>
@@ -74,33 +58,13 @@
               <option value="5">5</option>
             </select>
           </label>
-
-          <label class="field">
-            <span>Количество сессий</span>
-            <input id="sessions" type="range" min="1" max="20" value="6" />
-            <strong id="sessionsValue">6</strong>
-          </label>
-        </div>
-
-        <div class="switch-row">
-          <label class="switch">
-            <input id="urgent" type="checkbox" />
-            <span>Срочный старт (в течение 7 дней)</span>
-          </label>
         </div>
 
         <div class="result" aria-live="polite">
           <div>
-            <p>Цена за встречу</p>
-            <h3 id="pricePerSession">4 000 грн</h3>
-          </div>
-          <div>
-            <p>Итог за пакет</p>
-            <h2 id="totalPrice">24 000 грн</h2>
-          </div>
-          <div>
-            <p>Скидка</p>
-            <h3 id="discount">0%</h3>
+            <p>Продолжительность сессии за 1 особу</p>
+            <h2 id="sessionMinutes">60 минут</h2>
+            <p id="formulaDetails">(G=60 мин, N=1)</p>
           </div>
         </div>
 

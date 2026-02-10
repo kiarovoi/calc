@@ -24,8 +24,8 @@
       <section class="hero reveal">
         <h1>Калькулятор стоимости супервизии</h1>
         <p>
-          Выберите формат, длительность и количество сессий. Цена пересчитывается
-          мгновенно и подходит для публикации на лендинге.
+          Выберите формат, количество людей, продолжительность встречи и количество
+          сессий. Цена пересчитывается мгновенно.
         </p>
       </section>
 
@@ -49,11 +49,29 @@
           </label>
 
           <label class="field">
-            <span>Длительность</span>
-            <select id="duration">
-              <option value="60">60 минут</option>
-              <option value="90" selected>90 минут</option>
-              <option value="120">120 минут</option>
+            <span>Количество людей</span>
+            <select id="people">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+              <option value="6">6</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Продолжительность встречи (часы)</span>
+            <select id="durationHours">
+              <option value="1">1</option>
+              <option value="1.5" selected>1.5</option>
+              <option value="2">2</option>
+              <option value="2.5">2.5</option>
+              <option value="3">3</option>
+              <option value="3.5">3.5</option>
+              <option value="4">4</option>
+              <option value="4.5">4.5</option>
+              <option value="5">5</option>
             </select>
           </label>
 
@@ -73,12 +91,12 @@
 
         <div class="result" aria-live="polite">
           <div>
-            <p>Цена за сессию</p>
-            <h3 id="pricePerSession">450 грн</h3>
+            <p>Цена за встречу</p>
+            <h3 id="pricePerSession">4 000 грн</h3>
           </div>
           <div>
             <p>Итог за пакет</p>
-            <h2 id="totalPrice">2 700 грн</h2>
+            <h2 id="totalPrice">24 000 грн</h2>
           </div>
           <div>
             <p>Скидка</p>

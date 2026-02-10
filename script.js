@@ -1,7 +1,8 @@
 const el = {
   format: document.getElementById("format"),
   type: document.getElementById("type"),
-  duration: document.getElementById("duration"),
+  people: document.getElementById("people"),
+  durationHours: document.getElementById("durationHours"),
   sessions: document.getElementById("sessions"),
   sessionsValue: document.getElementById("sessionsValue"),
   urgent: document.getElementById("urgent"),
@@ -10,16 +11,10 @@ const el = {
   discount: document.getElementById("discount"),
 };
 
-const BASE_PRICE = {
-  individual: 330,
-  group: 420,
-  team: 560,
-};
-
-const DURATION_MULTIPLIER = {
-  60: 1,
-  90: 1.35,
-  120: 1.65,
+const BASE_PRICE_PER_HOUR = {
+  individual: 700,
+  group: 900,
+  team: 1200,
 };
 
 const FORMAT_MULTIPLIER = {
@@ -40,32 +35,35 @@ function packageDiscount(sessions) {
 
 function calculate() {
   const type = el.type.value;
-  const duration = Number(el.duration.value);
+  const people = Number(el.people.value);
+  const durationHours = Number(el.durationHours.value);
   const sessions = Number(el.sessions.value);
   const format = el.format.value;
   const urgent = el.urgent.checked;
 
   el.sessionsValue.textContent = String(sessions);
 
-  let perSession =
-    BASE_PRICE[type] * DURATION_MULTIPLIER[duration] * FORMAT_MULTIPLIER[format];
+  let pricePerMeeting =
+    BASE_PRICE_PER_HOUR[type] * people * durationHours * FORMAT_MULTIPLIER[format];
 
   if (urgent) {
-    perSession *= 1.15;
+    pricePerMeeting *= 1.15;
   }
 
   const discountPercent = packageDiscount(sessions);
-  const totalBeforeDiscount = perSession * sessions;
+  const totalBeforeDiscount = pricePerMeeting * sessions;
   const total = totalBeforeDiscount * (1 - discountPercent / 100);
 
-  el.pricePerSession.textContent = formatMoney(perSession);
+  el.pricePerSession.textContent = formatMoney(pricePerMeeting);
   el.totalPrice.textContent = formatMoney(total);
   el.discount.textContent = `${discountPercent}%`;
 }
 
-[el.format, el.type, el.duration, el.sessions, el.urgent].forEach((input) => {
-  input.addEventListener("input", calculate);
-  input.addEventListener("change", calculate);
-});
+[el.format, el.type, el.people, el.durationHours, el.sessions, el.urgent].forEach(
+  (input) => {
+    input.addEventListener("input", calculate);
+    input.addEventListener("change", calculate);
+  }
+);
 
 calculate();

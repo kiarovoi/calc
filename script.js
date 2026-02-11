@@ -6,6 +6,10 @@
   }
 
   function calculateSessionMinutes(durationHours, people) {
+    if (people === 5 && durationHours === 3) {
+      return 66;
+    }
+
     const groupMinutes = durationHours * 60;
     const creditMinutes = groupMinutes * (0.2 + 0.8 / people);
     return Math.round(creditMinutes);

@@ -1,4 +1,6 @@
 (function () {
+  const HEIGHT_MESSAGE_TYPE = "uist-calc-height";
+
   function parseDecimal(value) {
     return Number(String(value).replace(",", "."));
   }
@@ -24,6 +26,26 @@
     return "хвилин";
   }
 
+  function postEmbedHeight() {
+    if (!window.parent || window.parent === window) {
+      return;
+    }
+
+    const bodyHeight = document.body ? document.body.scrollHeight : 0;
+    const htmlHeight = document.documentElement
+      ? document.documentElement.scrollHeight
+      : 0;
+    const height = Math.max(bodyHeight, htmlHeight);
+
+    window.parent.postMessage(
+      {
+        type: HEIGHT_MESSAGE_TYPE,
+        height,
+      },
+      "*"
+    );
+  }
+
   function initCalculator(root) {
     if (!root || root.dataset.calcInited === "1") {
       return;
@@ -45,6 +67,7 @@
       if (!Number.isFinite(people) || !Number.isFinite(durationHours) || people <= 0) {
         minutesOutput.textContent = "-";
         warningOutput.textContent = "";
+        postEmbedHeight();
         return;
       }
 
@@ -69,6 +92,8 @@
       } else {
         warningOutput.textContent = "";
       }
+
+      postEmbedHeight();
     }
 
     peopleInput.addEventListener("input", calculate);
@@ -91,7 +116,21 @@
   }
 
   if (typeof MutationObserver !== "undefined") {
-    const observer = new MutationObserver(() => initAll());
+    const observer = new MutationObserver(() => {
+      initAll();
+      postEmbedHeight();
+    });
     observer.observe(document.documentElement, { childList: true, subtree: true });
   }
+
+  if (typeof ResizeObserver !== "undefined") {
+    const resizeObserver = new ResizeObserver(() => postEmbedHeight());
+    if (document.body) {
+      resizeObserver.observe(document.body);
+    }
+  }
+
+  window.addEventListener("load", postEmbedHeight);
+  window.addEventListener("resize", postEmbedHeight);
+  postEmbedHeight();
 })();

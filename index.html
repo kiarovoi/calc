@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-
-    <main class="page">
+    <main class="page uist-calc" data-calc-root>
       <section class="hero reveal">
         <h1>Калькулятор тривалості супервізії</h1>
         <p>
@@ -31,7 +30,7 @@
         <div class="grid">
           <label class="field">
             <span>Кількість людей</span>
-            <select id="people">
+            <select data-calc="people">
               <option value="1" selected>1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -43,7 +42,7 @@
 
           <label class="field">
             <span>Тривалість зустрічі (години)</span>
-            <select id="durationHours">
+            <select data-calc="duration-hours">
               <option value="1" selected>1</option>
               <option value="1.5">1.5</option>
               <option value="2">2</option>
@@ -60,8 +59,8 @@
         <div class="result" aria-live="polite">
           <div>
             <p>Тривалість супервізії на 1 особу</p>
-            <h2 id="sessionMinutes">60 хвилин</h2>
-            <p id="durationWarning" class="result-warning"></p>
+            <h2 data-calc="session-minutes">60 хвилин</h2>
+            <p data-calc="duration-warning" class="result-warning"></p>
           </div>
         </div>
       </section>

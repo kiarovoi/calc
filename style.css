@@ -1,13 +1,13 @@
 :root {
-  --bg: #f4f5ef;
-  --card: #fffef8;
-  --ink: #192125;
-  --muted: #5a666c;
-  --line: #d8dfd2;
-  --accent: #204f4a;
-  --accent-soft: #e0f0ec;
-  --shadow: 0 20px 60px rgba(19, 31, 28, 0.1);
-  --warning: #9b5c00;
+  --bg: #f9f8f7;
+  --card: #ffffff;
+  --ink: #3c474c;
+  --muted: #6c7282;
+  --line: #d3cede;
+  --accent: #575d6f;
+  --accent-soft: #eef0f4;
+  --shadow: 0 18px 45px rgba(87, 93, 111, 0.12);
+  --warning: #fb6424;
 }
 
 * {
@@ -17,8 +17,8 @@
 body {
   margin: 0;
   color: var(--ink);
-  background: radial-gradient(circle at 15% 5%, #fef5d5 0%, transparent 25%),
-    radial-gradient(circle at 100% 100%, #d8efe8 0%, transparent 30%), var(--bg);
+  background: radial-gradient(circle at 10% 5%, #dbd8e7 0%, transparent 28%),
+    radial-gradient(circle at 100% 100%, #d3cede 0%, transparent 35%), var(--bg);
   font-family: Manrope, sans-serif;
   min-height: 100vh;
 }
@@ -33,7 +33,7 @@ body {
 .bg-shape-1 {
   width: 280px;
   height: 280px;
-  background: #fdd75a;
+  background: #d3cede;
   top: -90px;
   right: 8%;
 }
@@ -41,13 +41,13 @@ body {
 .bg-shape-2 {
   width: 300px;
   height: 300px;
-  background: #66beae;
+  background: #bcc8c8;
   bottom: -130px;
   left: -60px;
 }
 
 .page {
-  max-width: 920px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 48px 20px 80px;
 }
@@ -61,8 +61,10 @@ body {
 
 .hero p {
   margin: 0;
-  max-width: 720px;
+  max-width: none;
   color: var(--muted);
+  font-size: clamp(0.95rem, 1.2vw, 1.02rem);
+  white-space: nowrap;
 }
 
 .card {
@@ -100,13 +102,14 @@ select {
   min-height: 46px;
   padding: 0 12px;
   font: inherit;
+  color: var(--ink);
 }
 
 .result {
   margin-top: 22px;
   border: 1px solid var(--line);
   border-radius: 16px;
-  background: linear-gradient(135deg, var(--accent-soft), #f8fcfb);
+  background: linear-gradient(135deg, var(--accent-soft), #f7f8fa);
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
@@ -125,6 +128,7 @@ select {
   margin: 0;
   line-height: 1.2;
   font-size: clamp(1.3rem, 3vw, 2rem);
+  color: var(--ink);
 }
 
 .result-warning {
@@ -133,25 +137,6 @@ select {
   font-size: 14px;
   font-weight: 600;
   max-width: 620px;
-}
-
-.cta {
-  margin-top: 18px;
-  width: 100%;
-  border: 0;
-  border-radius: 12px;
-  min-height: 52px;
-  cursor: pointer;
-  background: var(--accent);
-  color: #fff;
-  font: inherit;
-  font-weight: 700;
-  transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-.cta:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.08);
 }
 
 .reveal {
@@ -179,5 +164,9 @@ select {
 
   .page {
     padding-top: 36px;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
   }
 }
